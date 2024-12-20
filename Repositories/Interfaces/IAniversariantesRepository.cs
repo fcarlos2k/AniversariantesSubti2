@@ -4,10 +4,10 @@ namespace AniversariantesSubti.Repositories.Interfaces;
 
 public interface IAniversariantesRepository
 {
-    IEnumerable<Aniversariantes> ObterTodosProximo7dias();
-    Aniversariantes? ObterPorId(int Id);
-    IEnumerable<Aniversariantes> ObterPorNome(string Nome);
-    IEnumerable<Aniversariantes> ObterPorMes(int mes);
-    void Adicionar(Aniversariantes aniversariantes);
-    void Remover(int Id);
+    IEnumerable<Aniversariante> ObterTodosProximo7dias();
+    Aniversariante? ObterPorId(int Id);
+    IEnumerable<Aniversariante> ObterPorNome(string Nome);
+    IEnumerable<Aniversariante> ObterPorMes(int mes);
+    public void Adicionar(Aniversariante aniversariantes);
+    public void Remover(int Id);
 }

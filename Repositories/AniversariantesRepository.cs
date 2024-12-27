@@ -52,7 +52,7 @@ public class AniversariantesRepository : IAniversariantesRepository
     {
         _aniversariantes.Add(aniversariantes);
     }
-    public void IAniversariantesRepository.Remover(int Id)
+    void IAniversariantesRepository.Remover(int Id)
     {
         var AniversarianteParaRemover = _aniversariantes.First(x => x.Id == Id);
         _aniversariantes.Remove(AniversarianteParaRemover);

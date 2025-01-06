@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniversariantesSubti", "AniversariantesSubti.csproj", "{30B86CE8-B8DC-4DBC-94E3-8FB0D98CE8C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AniversariantesSubti.Teste", "..\AniversariantesSubti.Teste\AniversariantesSubti.Teste.csproj", "{769CBE7B-3520-413F-8F22-8B32D96C3E49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{30B86CE8-B8DC-4DBC-94E3-8FB0D98CE8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30B86CE8-B8DC-4DBC-94E3-8FB0D98CE8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30B86CE8-B8DC-4DBC-94E3-8FB0D98CE8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{769CBE7B-3520-413F-8F22-8B32D96C3E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769CBE7B-3520-413F-8F22-8B32D96C3E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769CBE7B-3520-413F-8F22-8B32D96C3E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769CBE7B-3520-413F-8F22-8B32D96C3E49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

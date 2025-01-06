@@ -11,15 +11,18 @@ namespace AniversariantesSubti.Controllers
     public class AniversariantesController : ControllerBase
     {
         private readonly IAniversariantesRepository _repository;
+        private readonly ILogger<AniversariantesController> _logger;
 
-        public AniversariantesController(IAniversariantesRepository repository)
+        public AniversariantesController(IAniversariantesRepository repository, ILogger<AniversariantesController> logger)
         {
             _repository = repository;
+            _logger = logger;
         }
 
         [HttpPost]
         public ActionResult Post([FromBody] Aniversariante aniversariante)
         {
+            _logger.LogInformation("Adicionando aniversariante: {Aniversariante}", aniversariante);
             _repository.Adicionar(aniversariante);
             return Ok($"Codigo do aniversariante INCLUIDO: {aniversariante.Id}");
         }
@@ -31,21 +34,21 @@ namespace AniversariantesSubti.Controllers
             var aniversariante = _repository.ObterPorId(id);
             if (aniversariante is null)
                 return BadRequest("Aniversariante nao encontrado");
-
-                _repository.Remover(id);
-                return Ok($" Codigo do Aniversariante DELETADO: {id}");
-
+            
+            _repository.Remover(id);
+            return Ok($" Codigo do Aniversariante DELETADO: {id}");
         }
 
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("ObterPorMes/{mes:int?}")]
-        //public ActionResult<IEnumerable<Aniversariante>> Get(int? mes=DateTime.Now.Month)
         public ActionResult<IEnumerable<Aniversariante>> Get(int mes = 0)
 
         {
             if (mes == 0)
                 mes = DateTime.Now.Month;
-            
+
             if (mes < 1 || mes > 12)
                 return NotFound("Mes incorreto");
 
@@ -57,8 +60,18 @@ namespace AniversariantesSubti.Controllers
             return Ok(aniversariantes);
         }
 
+        //[HttpGet("ObterPorNome")]
+        //public ActionResult<Aniversariante> ObterPorNome([FromQuery] string nome)
+        //{
+        //    var aniversariantes = _repository.ObterPorNome(nome);
+
+        //    if (!aniversariantes.Any())
+        //        return NotFound("Aniversariante nao encontrado");
+
+        //    return Ok(aniversariantes);
+        //}
         [HttpGet("ObterPorNome")]
-        public ActionResult<Aniversariante> ObterPorNome([FromQuery] string nome)
+        public ActionResult<IEnumerable<Aniversariante>> ObterPorNome([FromQuery] string nome)
         {
             var aniversariantes = _repository.ObterPorNome(nome);
 
@@ -67,6 +80,7 @@ namespace AniversariantesSubti.Controllers
 
             return Ok(aniversariantes);
         }
+
 
         [HttpGet]
         public ActionResult<IEnumerable<Aniversariante>> ListarAniversariantesProximo7dias()
